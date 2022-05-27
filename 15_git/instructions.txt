@@ -1,0 +1,11 @@
+1. sukuriam repository git'e webe
+2. buti norimame folderyje
+3. terminale: git clone git@github.com:tomas-reves/test_project_1.git
+4. nueiti i sukurta folderi
+5. git add .
+6. git commit -m "Komentaras"
+7. git push origin main
+
+
+
+--------- git -am "this adds and commits with one command"
