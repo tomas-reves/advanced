@@ -1,0 +1,13 @@
+{% extends 'home.html' %}
+
+{% block body %}
+        <form action="/" method="post">
+            <input type="text" name="name" id="name">
+            <input type="submit" value="Add name">
+        </form>
+    <ol>
+        {% for name in names %}
+        <li>{{name.name}}</li>
+        {% endfor %}
+    </ol>
+{% endblock %}
