@@ -1,0 +1,27 @@
+{% extends 'home.html' %}
+
+{% block body %}
+<div class="content">
+        <form action="/" method="post">
+            <input type="text" name="item" id="item">
+            <input type="submit" value="Add item">
+        </form>
+
+    <table>
+        <tr>
+            <th>Task</th>
+            <th>Actions</th>
+        </tr>
+        {% for item in all_items %}
+        <tr>
+            <td> {{ item.list_item }} </td>
+            <td>
+                <a href ="/delete/{{item.id}}">Delete</a>
+                <br/>
+                <a href="/update/{{item.id}}">Update</a>
+            </td>
+        </tr>
+
+        {% endfor %}
+</div>
+{% endblock %}

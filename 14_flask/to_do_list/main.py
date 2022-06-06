@@ -1,43 +1,65 @@
-"""Sukurti programą, kurioje galėtumėme sukurti, saugoti, redaguoti, trinti savo užduočių sąrašą.
-Užduotys turi būti saugomos į duomenų bazę.
-"""
+""""Sukurti programą, kurioje galėtumėme sukurti, saugoti, redaguoti, trinti savo užduočių sąrašą. Užduotys turi būti saugomos į duomenų bazę. """
+
+from flask import Flask, render_template, request, redirect
 from datetime import datetime
-from flask import Flask, render_template, url_for, redirect
 from flask_sqlalchemy import SQLAlchemy
-from flask_wtf import FlaskForm
-from wtforms import StringField
-from wtforms.validators import DataRequired, Length
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todolist.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
-class Items(db.Model):
+class ToDoList(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    list_item = db.Column(db.String(200), nullable=True)
-    time_created = db.Column(db.String(50, nullable=True))
-
-class ToDoListForm(FlaskForm):
-    item = StringField("Add item to Task list", validators=[DataRequired(), Length(min=2, max=20)])
-    submit = SubmitField('Submit')
+    list_item = db.Column(db.String(200), nullable=False)
 
 
-db.create_all()
+@app.before_first_request
+def create_tables():
+    db.create_all()
 
 
-@app.route("/", methods=['GET', 'POST'])
-@app.route("/home", methods=['GET', 'POST'])
-def add_item():
-    form = ToDoListForm()
-    if form.validate_on_submit():
-        date_now = datetime.now()
-        item = Items(list_item=form, time_created=date_now)
-        db.session.add(item)
+@app.route("/", methods=['POST', 'GET'])
+@app.route("/index", methods=['POST', 'GET'])
+def main():
+    if request.method == 'POST':
+        item_name = request.form['item']
+        item_instance = ToDoList(list_item=item_name)
+        db.session.add(item_instance)
         db.session.commit()
-    return render_template('home.html', title='Tasks list', form=form)
+        return redirect('/')
+    else:
+        all_items = ToDoList.query.all()
+        # print(all_items.list_item)
+        return render_template('index.html', all_items=all_items)
 
 
-if __name__ == '__main__':
+@app.route('/delete/<int:id>')
+def delete(id):
+    item_to_delete = ToDoList.query.get_or_404(id)
+    db.session.remove(item_to_delete)
+    db.commit()
+    return redirect('/')
+
+
+@app.route('/update/<int:id>', methods=['GET', 'POST'])
+def update(id):
+    task = ToDoList.query.get_or_404(id)
+    if request.method == 'POST':
+        if request.form['item'] != "":
+            task.content = request.form['item']
+            try:
+                db.session.commit()
+                return redirect('/')
+            except Exception as ex:
+                return ex
+        else:
+            return "Updating value to nothing, not allowed"
+    else:
+        return render_template('update.html', task=task)
+
+
+if __name__ == "__main__":
     app.run(debug=True)

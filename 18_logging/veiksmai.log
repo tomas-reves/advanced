@@ -1,0 +1,43 @@
+2022-06-01 20:02:21,669:ERROR:Netinkamas formatas
+Traceback (most recent call last):
+  File "C:/Users/Acer/Desktop/python_kursai/advanced/advanced/18_logging/18_2.py", line 25, in sqr_root_of_args
+    saknis = math.sqrt(a)
+TypeError: must be real number, not str
+2022-06-01 20:02:21,683:INFO:None, None
+2022-06-01 20:03:10,700:ERROR:Netinkamas formatas
+Traceback (most recent call last):
+  File "C:/Users/Acer/Desktop/python_kursai/advanced/advanced/18_logging/18_2.py", line 25, in sqr_root_of_args
+    saknis = math.sqrt(a)
+TypeError: must be real number, not str
+2022-06-01 20:03:10,701:ERROR:Dalyba is nulio
+Traceback (most recent call last):
+  File "C:/Users/Acer/Desktop/python_kursai/advanced/advanced/18_logging/18_2.py", line 34, in division
+    dalyba = x / y
+ZeroDivisionError: division by zero
+2022-06-01 20:03:10,702:INFO:None, None
+2022-06-01 20:03:15,434:ERROR:Netinkamas formatas
+Traceback (most recent call last):
+  File "C:/Users/Acer/Desktop/python_kursai/advanced/advanced/18_logging/18_2.py", line 25, in sqr_root_of_args
+    saknis = math.sqrt(a)
+TypeError: must be real number, not str
+2022-06-01 20:03:15,435:ERROR:Dalyba is nulio
+Traceback (most recent call last):
+  File "C:/Users/Acer/Desktop/python_kursai/advanced/advanced/18_logging/18_2.py", line 34, in division
+    dalyba = x / y
+ZeroDivisionError: division by zero
+2022-06-01 20:03:15,436:INFO:None, None
+2022-06-01 20:05:10,883:INFO:skaiciaus %(x)s saknis %(dalyba)s
+2022-06-01 20:05:10,887:INFO:5.0, 5.0
+2022-06-01 20:13:55,931:INFO:5.0, 5.0
+2022-06-01 20:16:03,100:INFO:skaiciaus 25 saknis 5.0
+2022-06-01 20:16:03,100:INFO:5.0, 5.0
+2022-06-01 20:16:25,341:INFO:skaiciaus 25 saknis 5.0
+2022-06-01 20:16:25,341:INFO:5.0, 5.0
+2022-06-01 20:18:12,637:INFO:skaiciaus 25 saknis 5.0
+2022-06-01 20:18:12,637:INFO:10 skaiciaus dalyba is skaiciaus 2 lygi 5.0
+2022-06-01 20:18:12,637:INFO:5.0, 5.0
+2022-06-01 20:26:52,912:INFO:skaiciaus 25 saknis 5.0
+2022-06-01 20:27:27,108:INFO:skaiciaus 25 saknis 5.0
+2022-06-01 20:39:14,772:INFO:skaiciaus 25 saknis 5.0
+2022-06-01 20:39:14,773:INFO:10 skaiciaus dalyba is skaiciaus 2 lygi 5.0
+2022-06-01 20:39:14,773:INFO:5.0, 5.0

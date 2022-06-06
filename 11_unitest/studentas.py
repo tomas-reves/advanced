@@ -18,3 +18,6 @@ class Studentas:
 
     def print_info(self):
         print(f"Name is {self.name} and the person has {self.credits} credits")
+
+student = Studentas("Tomas", 35)
+print(student.print_info())

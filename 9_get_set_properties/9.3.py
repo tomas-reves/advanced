@@ -12,7 +12,7 @@ Panaudoti @property, @property.setter dekoratorius.
 class Student:
     def __init__(self, name, credits):
         self.name = name
-        self.credits = credits
+        self._credits = credits
 
     @property
     def credits(self):
