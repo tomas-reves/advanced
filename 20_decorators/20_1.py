@@ -2,6 +2,7 @@
 
 from functools import wraps
 from time import sleep
+from typing import Callable
 
 
 def sleep_decorator(laikas):
@@ -13,7 +14,7 @@ def sleep_decorator(laikas):
         return wrapper
     return sleep_decorator
 
-def limit_args_decorator(args_count):
+def limit_args_decorator(args_count) -> Callable:
     def limit_args_decorator(func):
         def wrapper(*args):
             if len(args) > args_count:
@@ -23,7 +24,7 @@ def limit_args_decorator(args_count):
     return limit_args_decorator
 
 
-@limit_args_decorator(5)
+@limit_args_decorator(2)
 @sleep_decorator(3)
 def suma(*argss):
     return sum(*argss)
