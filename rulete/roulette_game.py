@@ -18,7 +18,7 @@ while True:
 
     print("==========================================================")
     game_input = int(input(f"ENTER NUMBER TO SELECT GAME\n 1 -- Guess roulette number\n 2 -- Guess color of the number\n "
-                           "3 -- Guess odds or evens\n 4 -- Guess dozens\n 5 -- Guess low or high numbers\n 6 -- Guess"
+                           "3 -- Guess odds or evens\n 4 -- Guess dozens\n 5 -- Guess low or high numbers\n 6 -- Guess "
                            "columns\n 7 -- Finish bet and play "))
     print("==========================================================")
     if game_input == 1:
