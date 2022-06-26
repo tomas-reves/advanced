@@ -7,7 +7,7 @@ green_color_roulette_list = [0]
 
 
 
-def check_number_color():
+def check_number_color(a):
     if a in red_color_roulette_list:
         return 1
     elif a in black_color_roulette_list:
@@ -17,32 +17,35 @@ def check_number_color():
 
 initial_color = 1
 initial_bet = 1
-winnings = 1000
+winnings = 100
 game = 0
 
 while True:
+
+    #time.sleep(1)
     game += 1
-    print(f"{winnings}")
     a = random.randint(0, 36)
-    if check_number_color() == initial_color:
+    if check_number_color(a) == initial_color:
+        #print(f"color: {initial_color}, spin color:{check_number_color(a)}, bet:{initial_bet}")#testavimui
         if initial_color == 1:
             initial_color = 2
         elif initial_color == 2:
             initial_color = 1
         initial_bet *= 2
         winnings += initial_bet
+        print(f"{winnings}, {game}")
         initial_bet = 1
-    else:
+    elif check_number_color(a) != initial_color:
+        #print(f"color: {initial_color}, spin color:{check_number_color(a)}, bet:{initial_bet}")#testavimui
         winnings -= initial_bet
+        print(f"{winnings}, {game}")
         if initial_color == 1:
             initial_color = 1
-            if winnings == 0:
-                print(f'{game}')
+            if winnings < 0:
                 break
         elif initial_color == 2:
             initial_color = 2
-            if winnings == 0:
-                print(f'{game}')
+            if winnings < 0:
                 break
 
         initial_bet *= 2
