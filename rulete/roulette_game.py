@@ -23,12 +23,20 @@ while True:
     print("==========================================================")
     if game_input == 1:
         while True:
-            number_of_num_bets = int(input("Enter how many numbers you want to place bet on: "))
-            for num in range(number_of_num_bets): # allows to place bets on more than one number
-                number_bet_input = int(input("Enter the number from 0 to 36 "))
-                place_number_bet_amount = int(input("Enter your bet for this game, the winning will be 2 to 1: "))
-                dict_of_bets[number_bet_input] = place_number_bet_amount
-            break
+
+
+            try:
+                number_of_num_bets = int(input("Enter how many numbers you want to place bet on: "))
+                if 0 <= number_of_num_bets < 37:
+                    for num in range(number_of_num_bets): # allows to place bets on more than one number
+                        number_bet_input = int(input("Enter the number from 0 to 36 "))
+                        place_number_bet_amount = int(input("Enter your bet for this game, the winning will be 2 to 1: "))
+                        dict_of_bets[number_bet_input] = place_number_bet_amount
+                    break
+            except ValueError:
+                print("Ilegal character entered, please enter numbers only.")
+            except:
+                print("Please enter only numbers from 0 to 36")
 
     if game_input == 2:
         while True:

@@ -17,7 +17,7 @@ def check_number_color(a):
 
 initial_color = 1
 initial_bet = 1
-winnings = 100
+winnings = 200
 game = 0
 
 while True:
@@ -49,6 +49,25 @@ while True:
                 break
 
         initial_bet *= 2
+
+#---------------------EKSPERIMENTAS---------------------------------
+# initial bet = 10
+#     1) winnings max 38 after 15 games, then lost at game 27
+#     2) lost at game 4
+#     3) lost at game 6
+# initial bet = 100
+#     1) max winnings: 208 at game 32, lost everything at game 40
+#     2) max winnings: 118 at game 9, lost everything at game 16
+#     3) max winnings: 126 at game 15, lost everything at game 22
+# intial bet = 200
+#     1) max winnings: 228 at game 15, lost everything at game 23
+#     2) gavosi, kad labai pralobo zaidejas, sumos pradejo suktis milijonais, ir nesibaige, teko nutraukti
+#     3) max winnings: 1748 at game 616, lost everything at game 627
+######
+#---------------Isvada--------------
+# reikia zaisti didesnemis sumomis, minimum 200, taip butina nusistatyti tiksla kokia suma laimejus jau nebus zaidziama.
+# greiciausiai su didesnemis sumomis laimejimai po daug zaidimu yra tiketina dar didesni, bet nerealistiski laiko sanaudu
+# prasme, nebent viska zaidima zaistu botas pagal sias taisykles.
 
 
 
